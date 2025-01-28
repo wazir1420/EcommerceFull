@@ -11,9 +11,10 @@ class WelcomeView extends StatelessWidget {
         viewModelBuilder: () => WelcomeViewModel(),
         builder: (context, viewModel, child) {
           return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.amber,
-            ),
+            body: SafeArea(
+                child: Column(
+              children: [],
+            )),
           );
         });
   }
