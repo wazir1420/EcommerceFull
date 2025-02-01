@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "706262091965",
+    "project_id": "wazir-e1d03",
+    "storage_bucket": "wazir-e1d03.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706262091965:android:8bd35eb3156ae06a0a4fd4",
+        "android_client_info": {
+          "package_name": "com.example.ecommerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJjx0htjnxsj-k9ShNee3NVgPoFb61Hro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

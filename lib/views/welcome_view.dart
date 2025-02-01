@@ -1,5 +1,5 @@
 import 'package:ecommerce/viewmodels/welcome_view_model.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:ecommerce/views/phone_auth_view.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -128,7 +128,12 @@ class WelcomeView extends StatelessWidget {
                       height: he * 0.1,
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PhoneAuthView()));
+                      },
                       child: Container(
                         height: 40,
                         width: we * 0.8,
