@@ -1,4 +1,5 @@
 import 'package:ecommerce/viewmodels/phone_auth_viewmodel.dart';
+import 'package:ecommerce/views/Login_view.dart';
 import 'package:ecommerce/views/otp_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -131,28 +132,36 @@ class PhoneAuthView extends StatelessWidget {
                         SizedBox(
                           height: 20,
                         ),
-                        Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                              color: Color(0xFF5383EC),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Image.asset('assets/images/email.png'),
-                              SizedBox(
-                                width: 40,
-                              ),
-                              Text(
-                                'Continue with Email',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold),
-                              )
-                            ],
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginView()));
+                          },
+                          child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                                color: Color(0xFF5383EC),
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Image.asset('assets/images/email.png'),
+                                SizedBox(
+                                  width: 40,
+                                ),
+                                Text(
+                                  'Continue with Email',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(

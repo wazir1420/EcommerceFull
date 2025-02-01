@@ -110,7 +110,8 @@ flutter:
     - family: PoppinsMedium
       fonts:
         - asset: fonts/Poppins-Medium.ttf
-          weight: 500           
+          weight: 500   
+       
 
     # - family: Schyler
     #   fonts:
