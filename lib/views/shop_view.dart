@@ -42,7 +42,9 @@ class ShopView extends StatelessWidget {
                               ),
                               Text(
                                 'Dhaka, Banasree',
-                                style: TextStyle(fontSize: 18),
+                                style: TextStyle(
+                                  fontSize: 18,
+                                ),
                               ),
                             ],
                           ),
