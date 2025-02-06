@@ -1,4 +1,5 @@
 import 'package:ecommerce/viewmodels/shop_view_model.dart';
+import 'package:ecommerce/views/product_view.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -137,11 +138,19 @@ class ShopView extends StatelessWidget {
                         child: Row(
                           spacing: 10,
                           children: [
-                            customContainer(context,
-                                image: 'assets/images/banana.png',
-                                name: 'Organic Bananas',
-                                pcs: '7pcs, priceg',
-                                price: '4.99'),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ProductView()));
+                              },
+                              child: customContainer(context,
+                                  image: 'assets/images/banana.png',
+                                  name: 'Organic Bananas',
+                                  pcs: '7pcs, priceg',
+                                  price: '4.99'),
+                            ),
                             customContainer(context,
                                 image: 'assets/images/strawbery.png',
                                 name: 'Red Apple',
