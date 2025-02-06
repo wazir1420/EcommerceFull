@@ -51,10 +51,14 @@ class ProductView extends StatelessWidget {
                     Positioned(
                         top: 50,
                         left: 20,
-                        child: Icon(
-                          Icons.arrow_back_ios,
-                          size: 30,
-                        )),
+                        child: IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(
+                              Icons.arrow_back_ios,
+                              size: 30,
+                            ))),
                     Positioned(
                         top: 50,
                         right: 20,
@@ -229,18 +233,47 @@ class ProductView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Nutritions',
+                            'Reviews',
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
-                          Row(
-                              children: List.generate(5, (index) {
-                            return Icon(
-                              Icons.star,
-                              color: Color(0xFFF3603F),
-                            );
-                          }))
+                          Row(children: [
+                            ...List.generate(5, (index) {
+                              return Icon(
+                                Icons.star,
+                                color: Color(0xFFF3603F),
+                              );
+                            }),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Icon(Icons.arrow_forward_ios)
+                          ])
                         ],
+                      ),
+                      SizedBox(
+                        height: he * 0.01,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          _showAddToCartBottomSheet(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFF53B175),
+                          minimumSize: Size(we * 1, he * 0.08),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          padding: EdgeInsets.zero,
+                        ),
+                        child: Text(
+                          'Add to Basket',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -250,4 +283,57 @@ class ProductView extends StatelessWidget {
           );
         });
   }
+}
+
+void _showAddToCartBottomSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    builder: (BuildContext context) {
+      var we = MediaQuery.of(context).size.width;
+
+      return Container(
+        height: 200,
+        width: we * 1,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(
+                CupertinoIcons.check_mark_circled_solid,
+                color: Color(0xFF53B175),
+                size: 40,
+              ),
+              SizedBox(height: 10),
+              Text(
+                "Item Added to Cart!",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("Ok"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF53B175),
+                ),
+              )
+            ],
+          ),
+        ),
+      );
+    },
+  );
 }
