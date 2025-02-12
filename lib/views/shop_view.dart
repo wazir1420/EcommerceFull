@@ -153,7 +153,7 @@ class ShopView extends StatelessWidget {
                             ),
                             customContainer(context,
                                 image: 'assets/images/strawbery.png',
-                                name: 'Red Apple',
+                                name: 'Straw Berry',
                                 pcs: '1kg, priceg',
                                 price: '4.99'),
                             customContainer(context,
