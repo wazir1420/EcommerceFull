@@ -1,3 +1,4 @@
+import 'package:ecommerce/views/explore_view.dart';
 import 'package:ecommerce/views/product_view.dart';
 import 'package:ecommerce/views/shop_view.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ShopView(),
+      home: ExploreView(),
     );
   }
 }
