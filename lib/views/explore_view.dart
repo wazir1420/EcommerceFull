@@ -1,4 +1,5 @@
 import 'package:ecommerce/viewmodels/explore_view_model.dart';
+import 'package:ecommerce/views/bevarage_view.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -68,6 +69,17 @@ class ExploreView extends StatelessWidget {
                                 color: viewModel.categories[index]['color'],
                                 colors: viewModel.categories[index]['colors'],
                                 width: 2,
+                                onTap: () {
+                                  if (viewModel.categories[index]['name'] ==
+                                      'Beverages') {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => BevarageView(),
+                                      ),
+                                    );
+                                  }
+                                },
                               );
                             },
                           ),
@@ -81,33 +93,23 @@ class ExploreView extends StatelessWidget {
             onTap: (index) => viewModel.onBottomNavTapped(index, context),
             items: const [
               BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.shop_outlined,
-                ),
+                icon: Icon(Icons.shop_outlined),
                 label: 'Shop',
               ),
               BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.image_search_outlined,
-                ),
+                icon: Icon(Icons.image_search_outlined),
                 label: 'Explore',
               ),
               BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.shopping_cart_outlined,
-                ),
+                icon: Icon(Icons.shopping_cart_outlined),
                 label: 'Cart',
               ),
               BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.favorite_outline,
-                ),
+                icon: Icon(Icons.favorite_outline),
                 label: 'Favorites',
               ),
               BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.person_outline,
-                ),
+                icon: Icon(Icons.person_outline),
                 label: 'Account',
               ),
             ],
@@ -129,33 +131,40 @@ class ExploreView extends StatelessWidget {
   }
 }
 
-Widget customContainers(BuildContext context,
-    {required String image,
-    required String name,
-    required Color color,
-    required Color colors,
-    required double width}) {
+/// 🔹 **Updated `customContainers` Widget**
+Widget customContainers(
+  BuildContext context, {
+  required String image,
+  required String name,
+  required Color color,
+  required Color colors,
+  required double width,
+  required VoidCallback onTap, // Add onTap parameter
+}) {
   var we = MediaQuery.of(context).size.width;
 
-  return Container(
-    height: 200,
-    width: we * 0.45,
-    decoration: BoxDecoration(
-      border: Border.all(width: width, color: color),
-      borderRadius: BorderRadius.circular(30),
-      color: colors,
-    ),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.asset(image, height: 80, width: 80, fit: BoxFit.cover),
-        SizedBox(height: 10),
-        Text(
-          name,
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        ),
-      ],
+  return GestureDetector(
+    onTap: onTap, // Call onTap when tapped
+    child: Container(
+      height: 200,
+      width: we * 0.45,
+      decoration: BoxDecoration(
+        border: Border.all(width: width, color: color),
+        borderRadius: BorderRadius.circular(30),
+        color: colors,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(image, height: 80, width: 80, fit: BoxFit.cover),
+          SizedBox(height: 10),
+          Text(
+            name,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
     ),
   );
 }

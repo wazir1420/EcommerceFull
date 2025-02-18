@@ -1,3 +1,4 @@
+import 'package:ecommerce/views/bevarage_view.dart';
 import 'package:ecommerce/views/explore_view.dart';
 import 'package:ecommerce/views/product_view.dart';
 import 'package:ecommerce/views/shop_view.dart';
