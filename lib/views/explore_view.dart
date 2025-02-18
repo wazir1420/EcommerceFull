@@ -76,6 +76,53 @@ class ExploreView extends StatelessWidget {
               ),
             ),
           ),
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: viewModel.selectedIndex,
+            onTap: (index) => viewModel.onBottomNavTapped(index, context),
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.shop_outlined,
+                ),
+                label: 'Shop',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.image_search_outlined,
+                ),
+                label: 'Explore',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.shopping_cart_outlined,
+                ),
+                label: 'Cart',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.favorite_outline,
+                ),
+                label: 'Favorites',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person_outline,
+                ),
+                label: 'Account',
+              ),
+            ],
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: Color(0xFF53B175),
+            unselectedItemColor: Colors.black,
+            selectedIconTheme: IconThemeData(
+              color: Color(0xFF53B175),
+              size: 30,
+            ),
+            unselectedIconTheme: IconThemeData(
+              color: Colors.black,
+              size: 30,
+            ),
+          ),
         );
       },
     );

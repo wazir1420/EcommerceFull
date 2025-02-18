@@ -1,11 +1,11 @@
+import 'package:ecommerce/views/explore_view.dart';
+import 'package:ecommerce/views/shop_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter/material.dart';
 
 class ExploreViewModel extends BaseViewModel {
-  // Search controller
   TextEditingController searchController = TextEditingController();
 
-  // Original list of categories
   final List<Map<String, dynamic>> _categories = [
     {
       'image': 'assets/images/fresh.png',
@@ -45,7 +45,6 @@ class ExploreViewModel extends BaseViewModel {
     },
   ];
 
-  // Getter for the categories
   List<Map<String, dynamic>> get categories {
     if (_searchText.isEmpty) {
       return _categories;
@@ -56,21 +55,32 @@ class ExploreViewModel extends BaseViewModel {
         .toList();
   }
 
-  // Private search text variable
   String _searchText = '';
 
-  // Getter for search text
   String get searchText => _searchText;
 
-  // Function to update search text
   void updateSearch(String text) {
     _searchText = text;
-    notifyListeners(); // Update UI when search text changes
+    rebuildUi();
   }
 
   @override
   void dispose() {
     searchController.dispose();
     super.dispose();
+  }
+
+  int _selectedIndex = 0;
+  int get selectedIndex => _selectedIndex;
+  void onBottomNavTapped(int index, BuildContext context) {
+    _selectedIndex = index;
+    rebuildUi();
+    if (index == 0) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => ShopView()));
+    } else if (index == 1) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => ExploreView()));
+    }
   }
 }

@@ -308,7 +308,7 @@ class ShopView extends StatelessWidget {
           ),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: viewModel.selectedIndex,
-            onTap: viewModel.onBottomNavTapped,
+            onTap: (index) => viewModel.onBottomNavTapped(index, context),
             items: const [
               BottomNavigationBarItem(
                 icon: Icon(
