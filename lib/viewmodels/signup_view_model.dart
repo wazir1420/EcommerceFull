@@ -1,4 +1,4 @@
-import 'package:ecommerce/views/Login_view.dart';
+import 'package:ecommerce/views/login_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -53,12 +53,14 @@ class SignupViewModel extends BaseViewModel {
     }
 
     try {
+      // ignore: unused_local_variable
       final credential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
 
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Registration successful!'),
@@ -67,6 +69,7 @@ class SignupViewModel extends BaseViewModel {
       );
 
       Navigator.pushReplacement(
+        // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(builder: (context) => const LoginView()),
       );
@@ -80,10 +83,12 @@ class SignupViewModel extends BaseViewModel {
         message = 'An unexpected error occurred: ${e.message}';
       }
 
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(message)),
       );
     } catch (e) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('An error occurred: $e')),
       );

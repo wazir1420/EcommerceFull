@@ -9,6 +9,7 @@ class SplashView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<SplashViewModel>.reactive(
         viewModelBuilder: () => SplashViewModel(),
+        // ignore: deprecated_member_use
         onModelReady: (viewModel) {
           viewModel.navigateToWelcome(context);
         },

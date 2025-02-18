@@ -20,11 +20,13 @@ class EmailAuthViewModel extends BaseViewModel {
 
   Future<void> login(BuildContext context) async {
     try {
+      // ignore: unused_local_variable
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text,
         password: passController.text,
       );
 
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Login successful!'),
@@ -33,6 +35,7 @@ class EmailAuthViewModel extends BaseViewModel {
       );
 
       Navigator.pushReplacement(
+        // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(builder: (context) => const ShopView()),
       );
@@ -47,21 +50,23 @@ class EmailAuthViewModel extends BaseViewModel {
         message = 'Unexpected error: ${e.message}';
       }
 
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(message),
           backgroundColor: Colors.red,
         ),
       );
-      print('FirebaseAuthException: $e');
+      debugPrint('FirebaseAuthException: $e');
     } catch (e) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Error: $e'),
           backgroundColor: Colors.red,
         ),
       );
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
   }
 

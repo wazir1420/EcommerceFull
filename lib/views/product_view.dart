@@ -325,10 +325,10 @@ void _showAddToCartBottomSheet(BuildContext context) {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text("Ok"),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF53B175),
                 ),
+                child: Text("Ok"),
               )
             ],
           ),

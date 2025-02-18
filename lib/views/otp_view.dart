@@ -5,7 +5,7 @@ import 'package:stacked/stacked.dart';
 
 class OtpView extends StatelessWidget {
   final String verificationid;
-  OtpView({super.key, required this.verificationid});
+  const OtpView({super.key, required this.verificationid});
 
   @override
   Widget build(BuildContext context) {
@@ -66,20 +66,19 @@ class OtpView extends StatelessWidget {
                                 smsCode: smsCode,
                               );
 
-                              // Sign in with the credential
                               await FirebaseAuth.instance
                                   .signInWithCredential(credential)
                                   .then((userCredential) {
-                                // Handle successful sign-in
-                                print("OTP Verified Successfully");
-                                // Navigate to the next screen
+                                debugPrint("OTP Verified Successfully");
+
                                 Navigator.pushReplacementNamed(
+                                  // ignore: use_build_context_synchronously
                                   context,
-                                  '/home', // Replace with your next screen
+                                  '/home',
                                 );
                               }).catchError((error) {
-                                // Handle error in sign-in
-                                print("Error during verification: $error");
+                                debugPrint("Error during verification: $error");
+                                // ignore: use_build_context_synchronously
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text("OTP Verification Failed!"),
@@ -87,7 +86,7 @@ class OtpView extends StatelessWidget {
                                 );
                               });
                             } else {
-                              print("Invalid OTP");
+                              debugPrint("Invalid OTP");
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content:
@@ -96,7 +95,8 @@ class OtpView extends StatelessWidget {
                               );
                             }
                           } catch (ex) {
-                            print("Error during verification: $ex");
+                            debugPrint("Error during verification: $ex");
+                            // ignore: use_build_context_synchronously
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text("Error during OTP verification."),

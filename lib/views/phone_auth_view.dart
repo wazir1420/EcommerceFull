@@ -1,5 +1,5 @@
 import 'package:ecommerce/viewmodels/phone_auth_viewmodel.dart';
-import 'package:ecommerce/views/Login_view.dart';
+import 'package:ecommerce/views/login_view.dart';
 import 'package:ecommerce/views/otp_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -64,18 +64,20 @@ class PhoneAuthView extends StatelessWidget {
 
                             if (phoneNumber.isEmpty ||
                                 phoneNumber.length < 10) {
-                              print("Please enter a valid phone number.");
+                              debugPrint("Please enter a valid phone number.");
                               return;
                             }
 
                             await FirebaseAuth.instance.verifyPhoneNumber(
                               verificationCompleted:
                                   (PhoneAuthCredential credential) {
-                                print("Verification completed: $credential");
+                                debugPrint(
+                                    "Verification completed: $credential");
                               },
                               verificationFailed: (FirebaseAuthException ex) {
-                                print("Verification failed: ${ex.message}");
-                                print("Error code: ${ex.code}");
+                                debugPrint(
+                                    "Verification failed: ${ex.message}");
+                                debugPrint("Error code: ${ex.code}");
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(SnackBar(
                                   content: Text(
@@ -84,7 +86,8 @@ class PhoneAuthView extends StatelessWidget {
                               },
                               codeSent:
                                   (String verificationId, int? resendToken) {
-                                print("Verification ID sent: $verificationId");
+                                debugPrint(
+                                    "Verification ID sent: $verificationId");
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
